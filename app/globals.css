@@ -3,25 +3,118 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ededed;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #ededed;
+        --foreground: #0a0a0a;
+    }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Raleway;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer components {
+    /* Title (Heading) */
+    .title {
+        @apply text-3xl font-bold text-[#1b651b] mb-4;
+    }
+
+    /* Optional: Add a hover effect if needed */
+    .title-hover:hover {
+        @apply text-[#0f3f0f];
+    }
+
+    /* Button */
+    .button {
+        @apply bg-[#1b651b] text-[#ededed] border border-[#1b651b] py-2 px-4 font-semibold rounded-md 
+           transition-all duration-300 ease-in-out 
+           hover:bg-transparent hover:text-[#1b651b];
+    }
+
+    .button-outline {
+        @apply border border-[#1b651b] text-[#1b651b] py-2 px-4 font-semibold rounded-md 
+           transition-all duration-300 ease-in-out 
+           hover:bg-[#1b651b] hover:text-[#ededed];
+    }
+
+    /* Reusable popup box */
+    .popup-box {
+        @apply absolute left-0 mt-2 w-64 bg-[#ededed] border border-gray-300 rounded-md shadow-lg p-4 hidden group-hover:block 
+           transition-all duration-300 ease-in-out z-10;
+    }
+
+    /* Optional: Popup text style */
+    .popup-text {
+        @apply text-sm text-gray-600;
+    }
+
+    /* Form Input */
+    .form-input {
+        @apply border border-gray-300 rounded-md py-2 px-4 bg-[#ededed]
+           focus:outline-none focus:border-[#1b651b] focus:ring-2 focus:ring-[#1b651b]/50 
+           transition-all duration-200 ease-in-out;
+    }
+
+    /* Dropdown (Select) */
+    .dropdown {
+        @apply appearance-none bg-[#ededed] border border-gray-300 py-2 px-4 pr-8 rounded-md w-full
+           focus:outline-none focus:border-[#1b651b] focus:ring-2 focus:ring-[#1b651b]/50
+           transition-all duration-200 ease-in-out;
+    }
+
+    /* Textarea */
+    .textarea {
+        @apply border border-gray-300 rounded-md py-2 px-4 w-full h-40 resize-none bg-[#ededed]
+           focus:outline-none focus:border-[#1b651b] focus:ring-2 focus:ring-[#1b651b]/50
+           transition-all duration-200 ease-in-out;
+    }
+
+    /* Card (Container) */
+    .card {
+        @apply bg-[#ededed] shadow-md rounded-md p-6
+           hover:shadow-lg transition-all duration-300 ease-in-out;
+    }
+
+    /* Modal */
+    .modal {
+        @apply fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center;
+    }
+
+    .modal-content {
+        @apply bg-[#ededed] rounded-md shadow-lg p-6 max-w-lg w-full;
+    }
+
+    .modal-header {
+        @apply text-lg font-semibold mb-4 text-[#1b651b];
+    }
+
+    .modal-body {
+        @apply text-sm text-gray-600;
+    }
+
+    .modal-footer {
+        @apply flex justify-end space-x-4;
+    }
+
+    /* Checkbox and Radio */
+    .checkbox {
+        @apply form-checkbox text-[#1b651b] transition duration-200 ease-in-out;
+    }
+
+    .radio {
+        @apply form-radio text-[#1b651b] transition duration-200 ease-in-out;
+    }
 }
