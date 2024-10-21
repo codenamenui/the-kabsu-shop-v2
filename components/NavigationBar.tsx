@@ -1,10 +1,10 @@
 "use client";
 
-import { signOut } from "@/components/actions";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { signOut } from "./actions";
 
 const NavigationBar = () => {
     const [user, setUser] = useState(null);
@@ -76,7 +76,7 @@ const NavigationBar = () => {
     };
 
     return (
-        <div className="fixed w-screen flex justify-center items-center gap-5 m-4">
+        <div className="w-screen flex justify-center items-center gap-5 m-4">
             <div className="relative group">
                 <Link href={"/"} className="button-outline">
                     Home

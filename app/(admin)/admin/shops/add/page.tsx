@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import FormInput from "@/components/ProfileInputComponent";
-import { addStoreInfo } from "@/app/(admin)/admin/shops/add/actions";
+import { addStoreInfo } from "@/app/(admin)/shops/add/actions";
 import Image from "next/image";
 
 const AddStore = () => {

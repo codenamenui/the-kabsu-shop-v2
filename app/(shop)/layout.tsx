@@ -8,17 +8,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+    children,
     home,
     shops,
     categories,
 }: Readonly<{
+    children: React.ReactNode;
     home: React.ReactNode;
     shops: React.ReactNode;
     categories: React.ReactNode;
 }>) {
     return (
         <html lang="en">
-            <body className="flex flex-col">
+            <body className="flex flex-col items-center w-screen">
                 <NavigationBar />
                 {home}
                 {shops}

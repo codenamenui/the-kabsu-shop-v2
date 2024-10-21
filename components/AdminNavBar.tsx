@@ -15,6 +15,9 @@ const AdminNavBar = () => {
                     <Link href={"/admin/admins"} className="button-outline">
                         View Admins
                     </Link>
+                    <Link href={"/admin/categories"} className="button-outline">
+                        View Categories
+                    </Link>
                 </div>
             </div>
         </div>
