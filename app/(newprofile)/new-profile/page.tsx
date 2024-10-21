@@ -4,7 +4,7 @@ import React, { useState, ChangeEvent } from "react";
 import SelectComponent from "@/components/SelectComponent";
 import { colleges } from "@/data/profiledata";
 import FormInput from "@/components/ProfileInputComponent";
-import { createProfile } from "@/app/new-profile/actions";
+import { createProfile } from "@/app/(newprofile)/new-profile/actions";
 import { useRouter } from "next/navigation";
 
 const NewProfile = () => {
@@ -38,7 +38,7 @@ const NewProfile = () => {
         if (status == 201) {
             router.push(`${process.env.NEXT_PUBLIC_BASE_URL}/`);
         } else if (status == 500) {
-            setSubmitting(true);
+            setSubmitting(false);
         }
     };
 

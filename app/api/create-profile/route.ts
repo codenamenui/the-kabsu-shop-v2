@@ -40,7 +40,7 @@ export async function POST(req: Request) {
                 year_level: studYear,
             },
         ])
-        .eq("user_id", user?.id);
+        .eq("id", user?.id);
 
     if (databaseError) {
         return new Response(JSON.stringify({ error: databaseError.message }), {

@@ -34,20 +34,24 @@ export async function GET(request: Request) {
             throw authError;
         }
 
-        const {
-            data: { student_number },
-        } = await supabase
+        const { data, error } = await supabase
             .from("students")
             .select("student_number")
-            .eq("user_id", user?.id)
             .single();
 
-        console.log(student_number);
-        if (student_number == null) {
+        if (data.student_number == null) {
             return NextResponse.redirect(
                 `${process.env.NEXT_PUBLIC_BASE_URL}/new-profile`
             );
         }
+
+        if (error) {
+            console.log(error);
+            return NextResponse.redirect(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/login`
+            );
+        }
+
         return NextResponse.redirect(`${process.env.NEXT_PUBLIC_BASE_URL}`);
     }
     // If no code is present, redirect to login

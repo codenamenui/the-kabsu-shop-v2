@@ -117,4 +117,20 @@ body {
     .radio {
         @apply form-radio text-[#1b651b] transition duration-200 ease-in-out;
     }
+
+    .input-label {
+        @apply bg-blue-500 text-white p-2 rounded cursor-pointer text-center;
+    }
+
+    .file-list {
+        @apply mt-4;
+    }
+
+    .file-item {
+        @apply flex items-center gap-2;
+    }
+
+    .remove-button {
+        @apply text-red-500 hover:text-red-700 cursor-pointer;
+    }
 }

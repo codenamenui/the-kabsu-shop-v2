@@ -1,20 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
-import { profileMiddleware } from "./middleware/middleware";
+import {
+    adminMiddleware,
+    apiMiddleware,
+    profileMiddleware,
+} from "@/middleware/middleware";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 export async function middleware(req: NextRequest) {
     const res = NextResponse.next();
 
-    if (req.nextUrl.pathname.startsWith("/api")) {
+    if (req.nextUrl.pathname.startsWith("/api/auth")) {
         return res;
+    }
+
+    if (req.nextUrl.pathname.startsWith("/api")) {
+        return apiMiddleware();
+    }
+
+    if (req.nextUrl.pathname.startsWith("/admin")) {
+        return adminMiddleware();
     }
 
     const supabase = createServerComponentClient({ cookies });
     const {
         data: { user },
     } = await supabase.auth.getUser();
-
     if (user) {
         // Ensure that the user profile is created
         const profileCreated = await profileMiddleware();
