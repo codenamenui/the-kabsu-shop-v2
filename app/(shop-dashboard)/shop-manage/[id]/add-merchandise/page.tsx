@@ -12,14 +12,14 @@ const AddMerch = () => {
     const [infoPicture, setInfoPicture] = useState<File | null>(null);
     const [variants, setVariants] = useState<
         { variantPicture: File | null; name: string; price: number | string }[]
-    >([]);
+    >([{ name: "", variantPicture: null, price: "" }]);
     const [merchPics, setMerchPics] = useState<File[]>([]);
     const [options, setOptions] = useState([]);
     const router = useRouter();
 
     useEffect(() => {
         const getOptions = async () => {
-            const res = await fetch("/api/view-categories");
+            const res = await fetch("/api/profile/view-categories");
             const { data: cats, error } = await res.json();
             setOptions(cats);
         };
@@ -175,7 +175,7 @@ const AddMerch = () => {
             }
             console.log("Successful!");
             router.push(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/shop/${id}/merchandise`
+                `${process.env.NEXT_PUBLIC_BASE_URL}/shop-manage/${id}/merchandise`
             );
         } catch (error) {
             console.error(error.message);
@@ -405,13 +405,15 @@ const AddMerch = () => {
                             />
                         )}
                         {/* Button to remove variant */}
-                        <button
-                            type="button"
-                            onClick={() => removeVariant(index)}
-                            className="remove-button mt-2"
-                        >
-                            Remove Variant
-                        </button>
+                        {index != 0 && (
+                            <button
+                                type="button"
+                                onClick={() => removeVariant(index)}
+                                className="remove-button mt-2"
+                            >
+                                Remove Variant
+                            </button>
+                        )}
                     </div>
                 ))}
 

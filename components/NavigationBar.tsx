@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { signOut } from "./actions";
 
@@ -11,6 +11,8 @@ const NavigationBar = () => {
     const [loading, setLoading] = useState(true);
     const [adminAccess, setAdminAccess] = useState<boolean>(false);
     const [storeHandled, setStoreHandled] = useState([]);
+    const [query, setQuery] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
         const getAuth = async () => {
@@ -75,8 +77,26 @@ const NavigationBar = () => {
         }
     };
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (query.trim() !== "") {
+            // Navigate to the search results page with the query parameter
+            router.push(`/search?query=${encodeURIComponent(query)}`);
+        }
+    };
+
     return (
         <div className="w-screen flex justify-center items-center gap-5 m-4">
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search for a product..."
+                />
+                <button type="submit">Search</button>
+            </form>
+
             <div className="relative group">
                 <Link href={"/"} className="button-outline">
                     Home
