@@ -111,7 +111,7 @@ body {
 
     /* Checkbox and Radio */
     .checkbox {
-        @apply form-checkbox text-[#1b651b] transition duration-200 ease-in-out;
+        @apply text-[#1b651b] transition duration-200 ease-in-out;
     }
 
     .radio {

@@ -9,18 +9,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-    search,
 }: Readonly<{
     children: React.ReactNode;
-    search: React.ReactNode;
 }>) {
     return (
         <html lang="en">
             <body>
-                <div className="flex flex-col">
-                    <NavigationBar />
-                    <div className="flex">{search}</div>
-                </div>
+                <NavigationBar />
+                <div className="flex w-screen">{children}</div>
             </body>
         </html>
     );
